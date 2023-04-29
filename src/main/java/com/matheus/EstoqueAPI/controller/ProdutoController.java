@@ -40,7 +40,6 @@ public class ProdutoController {
 		return produtos;
 	}
 	
-
 	@RequestMapping(
 			value = "/produto/{codigoBarras}", method = RequestMethod.GET)
 	@ResponseBody
@@ -52,5 +51,13 @@ public class ProdutoController {
 
 			return ResponseEntity.ok(produto);
 		}
+	}
+	
+	@RequestMapping(
+			value = "/deleteproduto/{codigoBarras}", method = RequestMethod.DELETE)
+	@ResponseBody
+	public String deleteByCodigoBarras(@PathVariable(name = "codigoBarras") int codigoBarras) {
+		produtoService.deleteByCodigoBarras(codigoBarras);
+		return "Sucesso";
 	}
 }
