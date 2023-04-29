@@ -1,6 +1,6 @@
 package com.matheus.EstoqueAPI.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.stereotype.Service;
 
 import com.matheus.EstoqueAPI.entity.Produto;
@@ -12,13 +12,18 @@ import com.matheus.EstoqueAPI.repository.ProdutoRepository;
 public class ProdutoService {
 
 	@Autowired
-	private ProdutoRepository repository;
+	private ProdutoRepository produtoRepository;
 	
 	public Produto cadastrarProduto(Produto produto) {
-		Produto produtoExistente = repository.findByCodigoBarras(produto.getCodigoBarras());
+		Produto produtoExistente = produtoRepository.findByCodigoBarras(produto.getCodigoBarras());
 		if (produtoExistente != null) {
 			throw new CodigoDeBarrasExistenteException("Codigo de barras existente!");
 		}
-		return repository.save(produto);
+		return produtoRepository.save(produto);
 	}
+	
+	public Produto findByCodigoBarras(Integer codigoBarras) {
+		return produtoRepository.findByCodigoBarras(codigoBarras);
+	}
+	
 }
