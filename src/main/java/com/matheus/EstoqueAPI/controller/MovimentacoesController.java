@@ -1,6 +1,7 @@
 package com.matheus.EstoqueAPI.controller;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,14 @@ public class MovimentacoesController {
 	@ResponseBody
 	public ArrayList<Movimentacoes> getMovimentacoes() {
 		ArrayList<Movimentacoes> movimentacoes = (ArrayList<Movimentacoes>) movimentacoesRepository.findAll();
+		return movimentacoes;
+	}
+	
+	@RequestMapping(
+			value = "/movimentacao/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public Optional<Movimentacoes> findMovimentacaoById(@PathVariable (name = "id") Long id){
+		Optional<Movimentacoes> movimentacoes = movimentacoesService.findMovimentacaoById(id);
 		return movimentacoes;
 	}
 	

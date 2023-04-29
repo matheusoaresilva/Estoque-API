@@ -1,5 +1,7 @@
 package com.matheus.EstoqueAPI.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,13 @@ public class MovimentacoesService {
 		return repository.save(movimentacoes);
 	}
 	
+	public Optional<Movimentacoes> findMovimentacaoById(Long id) {
+		return repository.findById(id);
+	}
+	
 	public void deleteMovimentacaoById(Long id) {
 		repository.deleteById(id);
 	}
+	
+	
 }
