@@ -7,5 +7,5 @@ import com.matheus.EstoqueAPI.entity.Movimentacoes;
 
 @Repository
 public interface MovimentacoesRepository extends JpaRepository<Movimentacoes, Long>{
-
+	void deleteById(Long id);
 }

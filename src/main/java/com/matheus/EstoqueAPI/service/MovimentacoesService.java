@@ -16,4 +16,8 @@ public class MovimentacoesService {
 	public Movimentacoes cadastrarProduto(Movimentacoes movimentacoes) {
 		return repository.save(movimentacoes);
 	}
+	
+	public void deleteMovimentacaoById(Long id) {
+		repository.deleteById(id);
+	}
 }
