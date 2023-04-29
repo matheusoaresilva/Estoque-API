@@ -1,7 +1,9 @@
 package com.matheus.EstoqueAPI.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,18 +16,27 @@ import com.matheus.EstoqueAPI.enums.TipoMovimento;
 
 @Table(name = "movimentacoes")
 @Entity(name = "movimentacoes")
-public class Movimentacoes {
+public class Movimentacoes implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(nullable = false)
 	private Integer quantidade;
 
+	@Column(nullable = false)
 	private LocalDate data;
 
+	@Column(nullable = false)
 	private String motivo;
 
+	@Column(nullable = false)
 	private String documento;
 
 	@ManyToOne

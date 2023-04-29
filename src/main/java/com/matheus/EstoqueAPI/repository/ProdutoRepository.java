@@ -7,5 +7,5 @@ import com.matheus.EstoqueAPI.entity.Produto;
 
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Long>{
-
+	Produto findByCodigoBarras(Integer codigoBarras);
 }
